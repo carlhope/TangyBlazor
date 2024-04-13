@@ -1,34 +1,23 @@
 ﻿@page "/learnblazor/demoproduct"
 <div class="row">
 <h3 class="text-primary">DemoProduct</h3>
+<p>Favourites Total : @SelectedFavouriteCount</p><br/>
+<p>Last Selected : @LastSelectedProductName</p>
 </div>
 <div class="row">
-    @foreach (var item in Products)
+    @foreach (var x in Products)
     {
-        <div class="col-6 border">
-            <h1>Product - @item.Id</h1><br/>
-            <p>Name - @item.Name</p><br/>
-            Show Properties : <input type="checkbox" @bind-value="@item.IsActive" checked="@(item.IsActive?"checked":null)" /><br />
-            @if (item.IsActive)
-            {
-                foreach(var x in item.ProductProperties)
-                {
-                    <p>@x.Key - @x.Value</p>
-                }
-
-            }
-                <button type="button" class="btn btn-danger">Danger</button>
-                <button type="button" class="btn btn-success">Success</button>
-             
-               
-            
-            
-        </div>
+        <_DisplayProduct item="@x" OnFavouriteUpdated="FavouriteCountUpdate" onLastSelectedProductChange="SelectedProductUpdate">
+            <FirstFragment>#1</FirstFragment>
+            <SecondFragment>#2</SecondFragment>
+        </_DisplayProduct>
     }
 </div>
 
 @code {
     List<Demo_Product> Products = new();
+    private int SelectedFavouriteCount { get; set; } = 0;
+    private string LastSelectedProductName { get; set; }
 
     protected override void OnInitialized()
     {
@@ -59,5 +48,20 @@
                 new Demo_ProductProp {Id = 3,Key = "Color",Value = "White"}
             }
             });
+    }
+    protected void FavouriteCountUpdate(bool isSelected)
+    {
+        if (isSelected)
+        {
+            SelectedFavouriteCount++;
+        }
+        else
+        {
+            SelectedFavouriteCount--;
+        }
+    }
+    protected void SelectedProductUpdate(string productName)
+    {
+        LastSelectedProductName = productName;
     }
 }

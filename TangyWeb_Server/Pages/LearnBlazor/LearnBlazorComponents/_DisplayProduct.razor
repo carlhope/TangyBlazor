@@ -1,0 +1,47 @@
+﻿<div class="col-6 border" @onclick="(args)=>LastSelectedProduct(args, item.Name)">
+    <h1>Product - @item.Id</h1><br />
+    <input type="checkbox" @onchange="FavouriteUpdated" /> Add to Favourite <br /><br/>
+    Name - @item.Name<br />
+    <p>RF from Parent - @FirstFragment @SecondFragment</p>
+    Show Properties : <input type="checkbox" @bind-value="@item.IsActive" checked="@(item.IsActive?"checked":null)" /><br />
+    @if (item.IsActive)
+    {
+        foreach (var x in item.ProductProperties)
+        {
+            <p>@x.Key - @x.Value</p>
+        }
+
+    }
+    <_EditDeleteButton IsActive="@item.IsActive">
+    </_EditDeleteButton>
+
+
+
+
+
+
+
+</div>
+
+@code {
+    [Parameter]
+    public Demo_Product item { get; set; }
+
+    [Parameter]
+    public EventCallback<bool> OnFavouriteUpdated { get; set; }
+    [Parameter]
+    public EventCallback<string> onLastSelectedProductChange { get; set; }
+    [Parameter]
+    public RenderFragment FirstFragment{ get; set; }
+    [Parameter]
+    public RenderFragment SecondFragment { get; set; }
+    private async Task FavouriteUpdated(ChangeEventArgs e)
+    {
+        await OnFavouriteUpdated.InvokeAsync((bool)e.Value);
+    }
+    private async Task LastSelectedProduct(MouseEventArgs e, string name)
+    {
+        await onLastSelectedProductChange.InvokeAsync(name);
+    }
+
+}
