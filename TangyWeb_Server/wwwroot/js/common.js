@@ -6,3 +6,19 @@
         toastr.error(message, 'Operation failed', { timeOut: 5000 });
     }
 }
+ShowSwal = (type, message) => {
+    if (type === "success") {
+        Swal.fire({
+            title: "Success Notification!",
+            text: message,
+            icon: "success"
+        });
+    }
+    if (type === "error") {
+        Swal.fire({
+            title: "Error Notification!",
+            text: message,
+            icon: "error"
+        });
+    }
+}
