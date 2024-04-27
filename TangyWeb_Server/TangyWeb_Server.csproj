@@ -4,6 +4,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>7246a034-d57c-4ba9-89c6-e028bd7b9f21</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -14,12 +15,18 @@
     </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.29" />
 	  <PackageReference Include="AutoMapper" Version="13.0.1" />
+	  <PackageReference Include="Syncfusion.Blazor.RichTextEditor" Version="25.1.41" />
+	  <PackageReference Include="Syncfusion.Blazor.Themes" Version="25.1.41" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Tangy_Business\Tangy_Business.csproj" />
     <ProjectReference Include="..\Tangy_DataAccess\Tangy_DataAccess.csproj" />
     <ProjectReference Include="..\Tangy_Models\Tangy_Models.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\images\product\" />
   </ItemGroup>
 
 </Project>
