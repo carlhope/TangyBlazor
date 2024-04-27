@@ -50,6 +50,8 @@
                             <label class="form-check-label">Is Customer Favourites</label>
                         </div>
                     </div>
+                    </div>
+                <div class="row pt-3">
                     <div class="btn-group col-6">
                             <label>Category</label>
                             <InputSelect @bind-Value="Product.CategoryId" class="form-select">
@@ -60,8 +62,7 @@
                                 }
                             </InputSelect>
                             <ValidationMessage For="()=>Product.CategoryId"></ValidationMessage>
-                            <label class="form-check-label">Is Customer Favourites</label>
-                       
+
                     </div>
                     <div class="form-group pt-4 col-6">
                         <InputFile OnChange="HandleImageUpload"></InputFile>

@@ -20,13 +20,14 @@ options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectio
 );
 builder.Services.AddScoped<ICategoryRepository,CategoryRepository>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<IProductPriceRepository, ProductPriceRepository>();
 builder.Services.AddScoped<IFileUpload, FileUpload>();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 var app = builder.Build();
 
 //Register SyncFusion License
-var syncFusionKey = builder.Configuration["SyncFusionKey"];
+string syncFusionKey = builder.Configuration["SyncFusionKey"];
 Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(syncFusionKey);
 
 // Configure the HTTP request pipeline.
