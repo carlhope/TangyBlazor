@@ -1,5 +1,8 @@
 ﻿@page "/details/{ProductId:int}"
 @inject IProductService _productService
+@inject ICartService _cartService
+@inject NavigationManager _navigationManager
+@inject IJSRuntime _jsRuntime
 @using TangyWeb_Client.ViewModels
 @if (IsProcessing)
 {
@@ -9,7 +12,7 @@
 }
 else
 {
-    <EditForm OnInvalidSubmit="AddToCart" Model="detailsVM" method="post">
+    <EditForm OnValidSubmit="AddToCart" Model="detailsVM" method="post">
         <DataAnnotationsValidator/>
         <div class="card container mt-4">
             <div class="card-header ml-0  row">
@@ -117,6 +120,14 @@ else
     }
     private async Task AddToCart()
     {
-        
+        ShoppingCart shoppingCart = new()
+            {
+                count = detailsVM.Count,
+                ProductId = ProductId,
+                ProductPriceId = detailsVM.SelectedProductPriceId
+            };
+            await _cartService.IncrementCart(shoppingCart);
+            _navigationManager.NavigateTo("/");
+            await _jsRuntime.ToastrSuccess("Product added to cart successfully");
     }
 }

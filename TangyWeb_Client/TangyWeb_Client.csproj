@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Blazored.LocalStorage" Version="4.5.0" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.28" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.28" PrivateAssets="all" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
@@ -19,6 +20,7 @@
 	
 	<ItemGroup>
 		<ProjectReference Include="..\Tangy_Models\Tangy_Models.csproj" />
+		<ProjectReference Include="..\Tangy_Common\Tangy_Common.csproj" />
 	</ItemGroup>
 
 </Project>
