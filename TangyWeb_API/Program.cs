@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Tangy_Business.Repository;
+using Tangy_Business.Repository.IRepository;
 using Tangy_DataAccess.Data;
 
 var builder = WebApplication.CreateBuilder(args);

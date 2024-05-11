@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Tangy_Models;
 
-namespace Tangy_Business.Repository
+namespace Tangy_Business.Repository.IRepository
 {
     public interface ICategoryRepository
     {

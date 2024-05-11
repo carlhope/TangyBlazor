@@ -114,7 +114,7 @@ else
     }
     private async Task SelectedProductPrice(MouseEventArgs e, int productPriceId)
     {
-        detailsVM.ProductPrice = Product.ProductPrices.FirstOrDefault(u => u.Id == productPriceId);
+        detailsVM.ProductPrice =  Product.ProductPrices.FirstOrDefault(u => u.Id == productPriceId);
         detailsVM.SelectedProductPriceId = productPriceId;
 
     }
