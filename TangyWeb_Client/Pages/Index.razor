@@ -1,6 +1,23 @@
 ﻿@page "/"
 @inject IProductService _productService
 
+<AuthorizeView>
+    <Authorized>
+        
+                    <h1 class="text-success text-center">Welcome to Tangy Restaurant @context.User.Identity.Name</h1>
+           
+    </Authorized>
+    <NotAuthorized>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1 class="text-danger text-center">You are not authorized to view this page</h1>
+                </div>
+            </div>
+        </div>
+    </NotAuthorized>
+</AuthorizeView>
+
 @if (IsProcessing)
 {
     <div style="position:fixed;top:50%;left:50%;margin-top:-50px;margin-left:-100px;">
