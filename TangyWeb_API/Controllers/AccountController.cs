@@ -105,6 +105,7 @@ namespace TangyWeb_API.Controllers
                     Token = token,
                     UserDTO = new UserDTO
                     {
+                        Id = user.Id,
                         Name = user.Name,
                         Email = user.Email,
                         PhoneNumber = user.PhoneNumber

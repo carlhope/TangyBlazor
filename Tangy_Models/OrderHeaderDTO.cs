@@ -9,25 +9,25 @@ namespace Tangy_Models
 {
     public class OrderHeaderDTO
     {
-        public int Id { get; set; }
+       public int Id { get; set; }
         [Required]
         public string UserId { get; set; }
-      
+
 
         [Required]
-        [Display(Name ="Order Total")]
+        [Display(Name = "Order Total")]
         public double OrderTotal { get; set; }
         [Required]
         public DateTime OrderDate { get; set; }
         [Required]
-        [Display(Name ="Shipping Date")]
+        [Display(Name = "Shipping Date")]
         public DateTime ShippingDate { get; set; }
         [Required]
         public string Status { get; set; }
 
         //stripe payment
         public string? SessionId { get; set; }
-        public string? PaymentIntentId { get; set;}
+        public string? PaymentIntentId { get; set; }
 
         [Display(Name ="Name")]
         [Required]
