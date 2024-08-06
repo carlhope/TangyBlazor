@@ -1,9 +1,10 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Stripe.FinancialConnections;
+//using Stripe.FinancialConnections;
 using Tangy_Business.Repository;
 using Tangy_Business.Repository.IRepository;
 using Tangy_Models;
+using Stripe.Checkout;
 
 namespace TangyWeb_API.Controllers
 {
@@ -54,29 +55,30 @@ namespace TangyWeb_API.Controllers
             var result = await _orderRepository.Create(paymentDTO.Order);
             return Ok(result);
         }
-        //[HttpPost]
-        //[ActionName("paymentsuccessful")]
-   //     public async Task<IActionResult> PaymentSuccessful([FromBody] OrderHeaderDTO orderHeaderDTO)
-   //     {
-   //         var service = new SessionService();
-   //         var sessionDetails = service.Get(orderHeaderDTO.SessionId);
-   //         if (sessionDetails.Paymentstatus == "paid")
-   //         {
-			//	var result = await _orderRepository.MarkPaymentSuccessful(orderHeaderDTO.Id);
-   //             if (result == null)
-   //             {
-   //                 return BadRequest(new ErrorModelDTO()
-   //                 {
-   //                     ErrorMessage = "Payment was not successful"
+        [HttpPost]
+        [ActionName("paymentsuccessful")]
+        public async Task<IActionResult> PaymentSuccessful([FromBody] OrderHeaderDTO orderHeaderDTO)
+        {
+            var service = new SessionService();
+            var sessionDetails = service.Get(orderHeaderDTO.SessionId);
+            if (sessionDetails.PaymentStatus == "paid")
+            {
+                var result = await _orderRepository.MarkPaymentSuccessful(orderHeaderDTO.Id);
+                if (result == null)
+                {
+                    return BadRequest(new ErrorModelDTO()
+                    {
+                        ErrorMessage = "Payment was not successful"
 
-   //                 });
-   //             }
-			//	return Ok(result);
-			//}
-            
-            
-            
+                    });
+                }
+                return Ok(result);
+            }
+            return BadRequest();
 
-   //     }
+
+
+
+        }
     }
 }

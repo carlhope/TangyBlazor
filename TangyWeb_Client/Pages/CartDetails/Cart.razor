@@ -97,6 +97,9 @@ else
 	}
 }
 @code {
+
+	//cart not set to instance of object if empty. correct to display empty cart message
+
 	public bool IsProcessing { get; set; } = false;
 	private List<ShoppingCart> ShoppingCart = new List<ShoppingCart>();
 	private IEnumerable<ProductDTO> Products { get; set; }
