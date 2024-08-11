@@ -9,6 +9,7 @@ using TangyWeb_Server.Data;
 using TangyWeb_Server.Service;
 using TangyWeb_Server.Service.IService;
 using Microsoft.AspNetCore.Identity;
+using Stripe;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,6 +27,7 @@ builder.Services.AddIdentity<IdentityUser,IdentityRole>()
     .AddDefaultUI()
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddScoped<ICategoryRepository,CategoryRepository>();
+builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
 builder.Services.AddScoped<IDbInitializer,DbInitializer >();
 builder.Services.AddScoped<IProductPriceRepository, ProductPriceRepository>();
@@ -33,6 +35,8 @@ builder.Services.AddScoped<IFileUpload, FileUpload>();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 var app = builder.Build();
+//stripe
+StripeConfiguration.ApiKey = builder.Configuration.GetSection("Stripe")["ApiKey"];
 
 //Register SyncFusion License
 string syncFusionKey = builder.Configuration["SyncFusionKey"];

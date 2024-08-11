@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.9.34723.18
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TangyWeb_Server", "TangyWeb_Server\TangyWeb_Server.csproj", "{3D50A108-D772-4232-8ADD-BE4269CCFC16}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D4D22FDA-E9EC-49A1-AA51-5144FB89039B} = {D4D22FDA-E9EC-49A1-AA51-5144FB89039B}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TangyWeb_Client", "TangyWeb_Client\TangyWeb_Client.csproj", "{0135E44B-8E6C-4D16-98D2-21217FA6763C}"
 EndProject

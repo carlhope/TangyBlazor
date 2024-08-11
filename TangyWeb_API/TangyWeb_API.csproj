@@ -9,8 +9,11 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="13.0.1" />
+    <PackageReference Include="MailKit" Version="4.7.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.31" />
-    <PackageReference Include="Stripe.net" Version="45.5.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.29" />
+    <PackageReference Include="MimeKit" Version="4.7.1" />
+    <PackageReference Include="Stripe.net" Version="45.7.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
   </ItemGroup>
 
