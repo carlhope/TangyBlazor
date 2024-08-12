@@ -10,14 +10,24 @@
 }
 else
 {
-	if (!ShoppingCart.Any())
-	{
-		<div>
-			Please add items to the shopping cart
-		</div>
-	}
+	//added to avoid null exception
+		if (ShoppingCart==null)
+		{
+			<div>
+				Please add items to the shopping cart!!!
+			</div>
+		}
+	
 	else
 	{
+		if (!ShoppingCart.Any())
+		{
+			<div>
+				Please add items to the shopping cart
+			</div>
+		}
+		else{
+		
 		<div class="container mt-4">
 			<div class="card">
 				<div class="card-header bg-dark text-light ml-0 ">
@@ -94,11 +104,11 @@ else
 				</div>
 			</div>
 		</div>
+		}
 	}
 }
 @code {
 
-	//cart not set to instance of object if empty. correct to display empty cart message
 
 	public bool IsProcessing { get; set; } = false;
 	private List<ShoppingCart> ShoppingCart = new List<ShoppingCart>();
@@ -116,12 +126,15 @@ else
 	{
 		OrderTotal = 0;
 		ShoppingCart = await _localStorage.GetItemAsync<List<ShoppingCart>>(SD.ShoppingCart);
-		foreach (var cart in ShoppingCart)
+		if(ShoppingCart!=null)//added to avoid null exception
 		{
-			cart.Product = Products.FirstOrDefault(u => u.Id == cart.ProductId);
-			cart.ProductPrice = cart.Product.ProductPrices.FirstOrDefault(u => u.Id == cart.ProductPriceId);
-			OrderTotal += (cart.ProductPrice.Price * cart.count);
+		foreach (var cart in ShoppingCart)
+			{
+				cart.Product = Products.FirstOrDefault(u => u.Id == cart.ProductId);
+				cart.ProductPrice = cart.Product.ProductPrices.FirstOrDefault(u => u.Id == cart.ProductPriceId);
+				OrderTotal += (cart.ProductPrice.Price * cart.count);
 
+			}
 		}
 	}
 
