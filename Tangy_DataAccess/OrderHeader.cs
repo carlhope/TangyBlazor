@@ -46,6 +46,7 @@ namespace Tangy_DataAccess
       
         public string PostalCode { get; set; }
         [Required]
+        [EmailAddress]
         public string Email { get; set; }
 
         public string? Tracking { get; set; }

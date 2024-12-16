@@ -16,6 +16,6 @@ namespace Tangy_Business.Repository.IRepository
 
         public Task<CategoryDTO> Get(int id);
 
-        public Task<IEnumerable<CategoryDTO>> GetAll();
+        Task<IEnumerable<CategoryDTO>> GetAll();
     }
 }
