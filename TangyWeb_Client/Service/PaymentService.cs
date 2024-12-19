@@ -27,8 +27,9 @@ namespace TangyWeb_Client.Service
             string responseResult = response.Content.ReadAsStringAsync().Result;
             if (response.IsSuccessStatusCode)
             {
-                var result = JsonConvert.DeserializeObject<SuccessModelDTO>(responseResult);
-                return result;
+                    //var result = JsonConvert.DeserializeObject<SuccessModelDTO>(responseResult);
+                    var result = System.Text.Json.JsonSerializer.Deserialize<SuccessModelDTO>(responseResult);
+                    return result;
             }
             else
             {
